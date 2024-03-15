@@ -40,7 +40,7 @@ options:
 
 # Ultilizando o -cidr
 ```sh
-./revlookup -cidr 1.1.1.1/24
+./revlookup -cidr 87.248.98.0/24
 ```
 
 # Ultilizando o -targets
