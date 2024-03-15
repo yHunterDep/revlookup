@@ -1,0 +1,92 @@
+#!/usr/bin/python3
+
+import threading, argparse, pyfiglet, ipaddress, time, socket, re
+
+def banner():                                                                  print(
+                pyfiglet.figlet_format("RevLookup")                            )                                                                      print("[>] Versão: 0.1")
+        print("[$] Coded By HunterDep")
+        print("[@] Github: https://github.com/yHunterDep\n")
+        time.sleep(2)
+
+def scan(i):
+        if not type(i) is list:
+                i = i.split()
+        for ip in i:
+                try:
+                        host = socket.gethostbyaddr(ip)
+                        print(host[0])
+
+                        if args.output:
+                                arqv = open(args.output, "a+")                                         arqv.write(host[0]+"\n")
+                                arqv.close()
+                except Exception as x:
+                        pass
+
+parser = argparse.ArgumentParser(description="Revlookup 1.0 - HunterDep")                                                                     parser.add_argument("-target", "--target", help="coloque o ip alvo, ex: 192.168.0.1")
+parser.add_argument("-targets", "--targets", help="coloque uma lista de ips, ex: -targets ips.txt")
+parser.add_argument("-cidr", "--cidr", help="passe um Cidr, ex: 192.168.0.1/24")
+parser.add_argument("-o", "--output", help="salvar os resultados")
+parser.add_argument("-s", "--silent", help="tirar o banner", action="store_true")
+
+args = parser.parse_args()
+
+t, ts = args.target, args.targets
+cidr = args.cidr
+silent = args.silent
+
+if not silent:
+        banner()
+
+if t and ts:
+        print("[?] Use o '-t' ou '-targets'")
+        quit()
+
+
+if t:
+        scan(t)
+
+elif cidr:
+        thrs = []
+        ip_range = ipaddress.ip_network(cidr)
+        ip_list = [str(ip) for ip in ip_range.hosts()]
+
+        for ip in ip_list:
+                thr = threading.Thread(target=scan, args=(ip,))
+                thr.start()
+                thrs.append(thr)
+        for t in thrs:
+                t.join()
+
+# Orientação
+# Aqui se o usuário escolher o -targets, o programa vai ler o arquivo
+
+# pra cada ip em ip_list, ele verifica se o ip é um ip normal, ex: 1.1.1.1, ai ele cria uma Thread e envia pro scan()
+# se não for um ip normal (se tiver um CIDR), ele vai resolver o CIDR, criando uma nova lista (ip_list2), e pra cada um, ele criará um thread e enviará pro scan()
+
+if ts:
+        try:
+                ip_list = open(ts, "r+").readlines()
+                ip_list = [x.strip("\n") for x in ip_list]
+
+                regex_ip = "\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"
+                regex_cidr = "\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/\d*"
+                thrs = []
+
+                for ip in ip_list:
+                        ### IP NORMAL ###
+                        if re.findall(regex_ip, ip):
+                                thr = threading.Thread(target=scan, args=(ip,))
+                                thr.start()
+
+                        ### CIDR ###
+                        if re.findall(regex_cidr, ip):
+                                ip_range = ipaddress.ip_network(ip)
+                                ip_list2 = [str(ip) for ip in ip_range.hosts()]
+                                for ip2 in ip_list2:
+                                                thr = threading.Thread(target=scan, args=(ip2,))
+                                                thr.start()
+                                                thrs.append(thr)
+                                for thr in thrs:
+                                        thr.join()
+        except Exception as x:
+                pass
