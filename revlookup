@@ -3,9 +3,8 @@
 import threading, argparse, pyfiglet, ipaddress, time, socket, re
 
 def banner():
-        print(
-                pyfiglet.figlet_format("RevLookup")                            
-        )                                                                      print("[>] Versão: 0.1")
+        print(pyfiglet.figlet_format("RevLookup"))
+        print("[>] Versão: 0.1")
         print("[$] Coded By HunterDep")
         print("[@] Github: https://github.com/yHunterDep\n")
         time.sleep(2)
@@ -19,12 +18,14 @@ def scan(i):
                         print(host[0])
 
                         if args.output:
-                                arqv = open(args.output, "a+")                                         arqv.write(host[0]+"\n")
+                                arqv = open(args.output, "a+")
+                                arqv.write(host[0]+"\n")
                                 arqv.close()
                 except Exception as x:
                         pass
 
-parser = argparse.ArgumentParser(description="Revlookup 1.0 - HunterDep")                                                                     parser.add_argument("-target", "--target", help="coloque o ip alvo, ex: 192.168.0.1")
+parser = argparse.ArgumentParser(description="Revlookup 1.0 - HunterDep")
+parser.add_argument("-target", "--target", help="coloque o ip alvo, ex: 192.168.0.1")
 parser.add_argument("-targets", "--targets", help="coloque uma lista de ips, ex: -targets ips.txt")
 parser.add_argument("-cidr", "--cidr", help="passe um Cidr, ex: 192.168.0.1/24")
 parser.add_argument("-o", "--output", help="salvar os resultados")
@@ -42,7 +43,6 @@ if not silent:
 if t and ts:
         print("[?] Use o '-t' ou '-targets'")
         quit()
-
 
 if t:
         scan(t)
