@@ -32,8 +32,19 @@ options:
   -s, --silent          tirar o banner
 ```
 
-# Ultilizano o -target
+# Ultilizando o -target
 ```sh
 ./revlookup -target 140.82.113.31
 ./revlookup -target 87.248.98.39
+```
+
+# Ultilizando o -cidr
+```sh
+./revlookup -cidr 1.1.1.1/24
+```
+
+# Ultilizando o -targets
+O argumento -targets precisa de um arquivo com ips (CIDR ou NORMAIS) para funcionar, exemplo:
+```sh
+./revlookup -targets ips.txt
 ```
