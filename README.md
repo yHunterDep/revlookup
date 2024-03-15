@@ -48,3 +48,13 @@ O argumento -targets precisa de um arquivo com ips (CIDR ou NORMAIS) para funcio
 ```sh
 ./revlookup -targets ips.txt
 ```
+
+# Salvando resultados
+```sh
+./revlookup -target 140.82.113.31 --output subs.txt
+```
+
+# Retirar o Banner
+```sh
+./revlookup -target 140.82.113.31 --silent
+```
