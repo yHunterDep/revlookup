@@ -35,4 +35,5 @@ options:
 # Ultilizano o -target
 ```sh
 ./revlookup -target 140.82.113.31
+./revlookup -target 87.248.98.39
 ```
