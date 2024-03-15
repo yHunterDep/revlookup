@@ -3,7 +3,7 @@
 import threading, argparse, pyfiglet, ipaddress, time, socket, re
 
 def banner():                                                                  print(
-                pyfiglet.figlet_format("RevLookup")                            )                                                                      print("[>] Versão: 0.1")
+        pyfiglet.figlet_format("RevLookup")                            )                                                                      print("[>] Versão: 0.1")
         print("[$] Coded By HunterDep")
         print("[@] Github: https://github.com/yHunterDep\n")
         time.sleep(2)
