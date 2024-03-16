@@ -5,6 +5,7 @@ Revlookup é uma ferramenta escrita em Python3 que realiza um DNS Reverso em IPs
 ```sh
 git clone https://github.com/yHunterDep/revlookup/
 cd revlookup/
+pip3 install -r requirements.txt
 chmod +x revlookup
 ```
 
