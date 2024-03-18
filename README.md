@@ -1,7 +1,7 @@
 # revlookup
 Revlookup is a tool written in Python3 that performs Reverse DNS on IPs to identify subdomains and new applications
 
-# Instalação e Uso
+# Installation and Use
 ```sh
 git clone https://github.com/yHunterDep/revlookup/
 cd revlookup/
