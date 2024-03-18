@@ -1,5 +1,5 @@
 # revlookup
-Revlookup é uma ferramenta escrita em Python3 que realiza um DNS Reverso em IPs para a identificação de Subdomínios e novas aplicações
+Revlookup is a tool written in Python3 that performs Reverse DNS on IPs to identify subdomains and new applications
 
 # Instalação e Uso
 ```sh
@@ -9,7 +9,7 @@ pip3 install -r requirements.txt
 chmod +x revlookup
 ```
 
-# Help do RevLookup
+# Help of RevLookup
 ```sh
 ./revlookup -h
 
@@ -33,29 +33,29 @@ options:
   -s, --silent          tirar o banner
 ```
 
-# Ultilizando o -target
+# Resolving an IP
 ```sh
 ./revlookup -target 140.82.113.31
 ./revlookup -target 87.248.98.39
 ```
 
-# Ultilizando o -cidr
+# Solving a Cidr
 ```sh
 ./revlookup -cidr 87.248.98.0/24
 ```
 
-# Ultilizando o -targets
-O argumento -targets precisa de um arquivo com ips (CIDR ou NORMAIS) para funcionar, exemplo:
+# Resolving a file with IPS and Cidrs
+The -targets argument needs a file with ips (CIDR or NORMAL) to work, example:
 ```sh
 ./revlookup -targets ips.txt
 ```
 
-# Salvando resultados
+# Saving results
 ```sh
 ./revlookup -target 140.82.113.31 --output subs.txt
 ```
 
-# Retirar o Banner
+# Remove the Banner
 ```sh
 ./revlookup -target 140.82.113.31 --silent
 ```
