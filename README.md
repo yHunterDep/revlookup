@@ -207,6 +207,7 @@ ha1.vl-123.usw-1-lbd.ne1.yahoo.com
 unknown.yahoo.com
 unknown.yahoo.com
 media-router-ui71.canary.media.vip.ne1.yahoo.com
+...
 ```
 
 # Saving results
