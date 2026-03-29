@@ -1,35 +1,47 @@
 #!/usr/bin/python3
 
 import threading, argparse, pyfiglet, ipaddress, socket, time, sys, re
+from concurrent.futures import ThreadPoolExecutor
 
 def banner():
         print(pyfiglet.figlet_format("RevLookup"), file=sys.stderr)
-        print("[>] Versão: 1.1", file=sys.stderr)
+        print("[>] Versão: 1.2", file=sys.stderr)
         print("[$] Coded By HunterDep", file=sys.stderr)
         print("[@] Github: https://github.com/yHunterDep\n", file=sys.stderr)
-        time.sleep(2)
+        time.sleep(1)
 
 def scan(i):
-        if not type(i) is list:
-                i = i.split()
-        for ip in i:
-                try:
-                        host = socket.gethostbyaddr(ip)
-                        print(host[0])
+	try:
+                    if re.fullmatch(regex_domain, i):
+                            ips = socket.gethostbyname_ex(i)[2]
+                            for ip in ips:
+                                    host = socket.gethostbyaddr(ip)
+                                    print(host[0], flush=True)
+                                    if args.output:
+                                            with open(args.output, "a+") as f:
+                                                f.write(host[0]+"\n")
+                    else:
+                            host = socket.gethostbyaddr(i)
+                            print(host[0], flush=True)
 
-                        if args.output:
-                                arqv = open(args.output, "a+")
-                                arqv.write(host[0]+"\n")
-                                arqv.close()
-                except Exception as x:
-                        pass
+                            if args.output:
+                                    with open(args.output, "a+") as f:
+	                                    f.write(host[0]+"\n")
+        	                            f.close()
+	except Exception as x:
+		pass
+
+regex_ip = r"\d{1,3}(?:\.\d{1,3}){3}"
+regex_cidr = r"\d{1,3}(?:\.\d{1,3}){3}/\d+"
+regex_domain = r"([a-zA-Z0-9]+\.?)+\.[a-zA-Z]{2,}"
 
 parser = argparse.ArgumentParser(description="Revlookup 1.1 - HunterDep")
-parser.add_argument("-target", "--target", help="coloque o ip alvo, ex: 192.168.0.1")
-parser.add_argument("-targets", "--targets", help="coloque uma lista de ips, ex: -targets ips.txt")
-parser.add_argument("-cidr", "--cidr", help="passe um Cidr, ex: 192.168.0.1/24")
-parser.add_argument("-o", "--output", help="salvar os resultados")
-parser.add_argument("-s", "--silent", help="tirar o banner", action="store_true")
+parser.add_argument("-target", "--target", help="Target IP address or domain to perform reverse lookup (e.g., 72.217.29.238 or google.com)")
+parser.add_argument("-targets", "--targets", help="File containing IPs, domains, or CIDR ranges for reverse lookup (e.g., targets.txt)")
+parser.add_argument("-cidr", "--cidr", help="CIDR range to perform reverse lookup (e.g., 87.248.98.0/24)")
+parser.add_argument("-c", "--concurrent", type=int, help="Set the number of concurrent threads to use during scanning (default: 25)", default=25)
+parser.add_argument("-o", "--output", help="Output file to save results")
+parser.add_argument("-s", "--silent", help="Silent mode (disable banner)", action="store_true")
 
 args = parser.parse_args()
 
@@ -45,19 +57,15 @@ if t and ts:
         quit()
 
 if t:
-        scan(t)
+	scan(t)
 
 elif cidr:
         thrs = []
         ip_range = ipaddress.ip_network(cidr)
         ip_list = [str(ip) for ip in ip_range.hosts()]
 
-        for ip in ip_list:
-                thr = threading.Thread(target=scan, args=(ip,))
-                thr.start()
-                thrs.append(thr)
-        for t in thrs:
-                t.join()
+        with ThreadPoolExecutor(max_workers=args.concurrent) as executor:
+        	executor.map(scan, ip_list)
 
 # Orientação
 # Aqui se o usuário escolher o -targets, o programa vai ler o arquivo
@@ -66,29 +74,27 @@ elif cidr:
 # se não for um ip normal (se tiver um CIDR), ele vai resolver o CIDR, criando uma nova lista (ip_list2), e pra cada um, ele criará um thread e enviará pro scan()
 
 if ts:
-        try:
-                ip_list = open(ts, "r+").readlines()
-                ip_list = [x.strip("\n") for x in ip_list]
+        f_list = open(ts, "r+").readlines()
+        f_list = [x.strip() for x in f_list]
 
-                regex_ip = r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"
-                regex_cidr = r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/\d*"
-                thrs = []
+        workers = []
 
-                for ip in ip_list:
+        for tgt in f_list:
+                try:
                         ### IP NORMAL ###
-                        if re.findall(regex_ip, ip):
-                                thr = threading.Thread(target=scan, args=(ip,))
-                                thr.start()
+                        if re.fullmatch(regex_ip, tgt):
+                                workers.append(tgt)
 
                         ### CIDR ###
-                        if re.findall(regex_cidr, ip):
-                                ip_range = ipaddress.ip_network(ip)
-                                ip_list2 = [str(ip) for ip in ip_range.hosts()]
-                                for ip2 in ip_list2:
-                                                thr = threading.Thread(target=scan, args=(ip2,))
-                                                thr.start()
-                                                thrs.append(thr)
-                                for thr in thrs:
-                                        thr.join()
-        except Exception as x:
-                pass
+                        elif re.fullmatch(regex_cidr, tgt):
+                                ip_range = ipaddress.ip_network(tgt)
+                                ip_list = [str(ip) for ip in ip_range.hosts()]
+                                workers.extend(ip_list)
+
+			## DOMAIN ##
+                        elif re.fullmatch(regex_domain, tgt):
+                                workers.extend(tgt.split())
+                except Exception as x:
+                    pass
+        with ThreadPoolExecutor(max_workers=args.concurrent) as executor:
+                executor.map(scan, workers)
