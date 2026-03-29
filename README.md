@@ -40,7 +40,18 @@ options:
 # Resolving an IP
 ```sh
 ./revlookup -target 140.82.113.31
-./revlookup -target 87.248.98.39
+ ____            _                _
+|  _ \ _____   _| |    ___   ___ | | ___   _ _ __
+| |_) / _ \ \ / / |   / _ \ / _ \| |/ / | | | '_ \
+|  _ <  __/\ V /| |__| (_) | (_) |   <| |_| | |_) |
+|_| \_\___| \_/ |_____\___/ \___/|_|\_\\__,_| .__/
+                                            |_|
+
+[>] Versão: 1.2
+[$] Coded By HunterDep
+[@] Github: https://github.com/yHunterDep
+
+in-5.smtp.github.com
 ```
 
 # Solving a Cidr
