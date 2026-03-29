@@ -116,7 +116,8 @@ lsn3.ir2.yahoo.com
 # Resolve a file containing domain names, IP addresses, or CIDRs, or all of them together.
 Solving a file with subdomains
 ```sh
-$ ./revlookup -targets yahoo_subdomains.txt  ____            _                _
+$ ./revlookup -targets yahoo_subdomains.txt
+____            _                _
 |  _ \ _____   _| |    ___   ___ | | ___   _ _ __
 | |_) / _ \ \ / / |   / _ \ / _ \| |/ / | | | '_ \
 |  _ <  __/\ V /| |__| (_) | (_) |   <| |_| | |_) |
@@ -162,6 +163,50 @@ b32.f51.ymdb.a4e.yahoo.com
 ats1.l7.search.vip.bf1.yahoo.com
 
 ...
+```
+
+Solving a file with cidr's
+cidr_file.txt:
+```
+144.118.0.0/16
+74.6.231.0/24
+23.38.144.0/20
+```
+```sh
+./revlookup -targets cidr_file.txt
+ ____            _                _
+|  _ \ _____   _| |    ___   ___ | | ___   _ _ __
+| |_) / _ \ \ / / |   / _ \ / _ \| |/ / | | | '_ \
+|  _ <  __/\ V /| |__| (_) | (_) |   <| |_| | |_) |
+|_| \_\___| \_/ |_____\___/ \___/|_|\_\\__,_| .__/
+                                            |_|
+
+[>] Versão: 1.2
+[$] Coded By HunterDep
+[@] Github: https://github.com/yHunterDep
+
+gw3-gi-0-1.noc.drexel.edu
+gw4-gi-0-3-0.noc.drexel.edu
+gw6-te-0-3-0-144-118-0-6.noc.drexel.edu
+gw9-gi-0-2-144-118-0-9.noc.drexel.edu
+gw12-te-7-1.noc.drexel.edu
+gw13-te-7-1.noc.drexel.edu
+gw12.noc.drexel.edu
+gw6.noc.drexel.edu
+gw4.noc.drexel.edu
+...
+media-router-fp71.canary.media.vip.ne1.yahoo.com
+unknown.yahoo.com
+vl-123.usw1-1-lbd.ne1.yahoo.com
+vl-123.usw2-1-lbd.ne1.yahoo.com
+media-router-fp73.prod.media.vip.ne1.yahoo.com
+unknown.yahoo.com
+unknown.yahoo.com
+vl-123.slb3-1-lbd.ne1.yahoo.com
+ha1.vl-123.usw-1-lbd.ne1.yahoo.com
+unknown.yahoo.com
+unknown.yahoo.com
+media-router-ui71.canary.media.vip.ne1.yahoo.com
 ```
 
 # Saving results
