@@ -39,7 +39,7 @@ options:
 
 # Resolving an IP
 ```sh
-./revlookup -target 140.82.113.31
+$ ./revlookup -target 140.82.113.31
  ____            _                _
 |  _ \ _____   _| |    ___   ___ | | ___   _ _ __
 | |_) / _ \ \ / / |   / _ \ / _ \| |/ / | | | '_ \
@@ -56,7 +56,39 @@ in-5.smtp.github.com
 
 # Solving a Cidr
 ```sh
-./revlookup -cidr 87.248.98.0/24
+$ ./revlookup -cidr 87.248.98.0/24
+ ____            _                _
+|  _ \ _____   _| |    ___   ___ | | ___   _ _ __
+| |_) / _ \ \ / / |   / _ \ / _ \| |/ / | | | '_ \
+|  _ <  __/\ V /| |__| (_) | (_) |   <| |_| | |_) |
+|_| \_\___| \_/ |_____\___/ \___/|_|\_\\__,_| .__/
+                                            |_|
+
+[>] Versão: 1.2
+[$] Coded By HunterDep
+[@] Github: https://github.com/yHunterDep
+
+vl-150.bas1-1-prd.ir2.yahoo.com
+unknown.yahoo.com
+unknown.yahoo.com
+unknown.yahoo.com
+unknown.yahoo.com
+unknown.yahoo.com
+ha2.vl-150.bas-1-prd.ir2.yahoo.com
+unknown.yahoo.com
+unknown.yahoo.com
+unknown.yahoo.com
+vl-150.bas2-1-prd.ir2.yahoo.com
+unknown.yahoo.com
+unknown.yahoo.com
+unknown.yahoo.com
+unknown.yahoo.com
+unknown.yahoo.com
+unknown.yahoo.com
+unknown.yahoo.com
+lsn4.ir2.yahoo.com
+lsn3.ir2.yahoo.com
+...
 ```
 
 # Resolving a file with IPS and Cidrs
