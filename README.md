@@ -54,6 +54,28 @@ $ ./revlookup -target 140.82.113.31
 in-5.smtp.github.com
 ```
 
+# Resolving a Domain (-target too)
+```sh
+$ ./revlookup -target yahoo.com
+ ____            _                _
+|  _ \ _____   _| |    ___   ___ | | ___   _ _ __
+| |_) / _ \ \ / / |   / _ \ / _ \| |/ / | | | '_ \
+|  _ <  __/\ V /| |__| (_) | (_) |   <| |_| | |_) |
+|_| \_\___| \_/ |_____\___/ \___/|_|\_\\__,_| .__/
+                                            |_|
+
+[>] Versão: 1.2
+[$] Coded By HunterDep
+[@] Github: https://github.com/yHunterDep
+
+media-router-fp74.prod.media.vip.gq1.yahoo.com
+media-router-fp73.prod.media.vip.ne1.yahoo.com
+media-router-fp73.prod.media.vip.bf1.yahoo.com
+media-router-fp74.prod.media.vip.ne1.yahoo.com
+media-router-fp74.prod.media.vip.bf1.yahoo.com
+media-router-fp73.prod.media.vip.gq1.yahoo.com
+```
+
 # Solving a Cidr
 ```sh
 $ ./revlookup -cidr 87.248.98.0/24
