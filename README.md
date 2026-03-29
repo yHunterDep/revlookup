@@ -16,7 +16,7 @@ chmod +x revlookup
 usage: revlookup [-h] [-target TARGET] [-targets TARGETS]
                  [-cidr CIDR] [-o OUTPUT] [-s]
 
-Revlookup 1.0 - HunterDep
+Revlookup 1.1 - HunterDep
 
 options:
   -h, --help            show this help message and exit
