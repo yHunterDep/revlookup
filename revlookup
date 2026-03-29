@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 
-import threading, argparse, pyfiglet, ipaddress, time, socket, re
+import threading, argparse, pyfiglet, ipaddress, socket, time, sys, re
 
 def banner():
-        print(pyfiglet.figlet_format("RevLookup"))
-        print("[>] Versão: 0.1")
-        print("[$] Coded By HunterDep")
-        print("[@] Github: https://github.com/yHunterDep\n")
+        print(pyfiglet.figlet_format("RevLookup"), file=sys.stderr)
+        print("[>] Versão: 0.2", file=sys.stderr)
+        print("[$] Coded By HunterDep", file=sys.stderr)
+        print("[@] Github: https://github.com/yHunterDep\n", file=sys.stderr)
         time.sleep(2)
 
 def scan(i):
@@ -24,7 +24,7 @@ def scan(i):
                 except Exception as x:
                         pass
 
-parser = argparse.ArgumentParser(description="Revlookup 1.0 - HunterDep")
+parser = argparse.ArgumentParser(description="Revlookup 1.1 - HunterDep")
 parser.add_argument("-target", "--target", help="coloque o ip alvo, ex: 192.168.0.1")
 parser.add_argument("-targets", "--targets", help="coloque uma lista de ips, ex: -targets ips.txt")
 parser.add_argument("-cidr", "--cidr", help="passe um Cidr, ex: 192.168.0.1/24")
@@ -70,8 +70,8 @@ if ts:
                 ip_list = open(ts, "r+").readlines()
                 ip_list = [x.strip("\n") for x in ip_list]
 
-                regex_ip = "\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"
-                regex_cidr = "\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/\d*"
+                regex_ip = r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"
+                regex_cidr = r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/\d*"
                 thrs = []
 
                 for ip in ip_list:
