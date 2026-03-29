@@ -1,4 +1,4 @@
-![revlookup](revlookup.jpg)
+![revlookup](revlookup.png)
 
 # RevLookup
 Revlookup is a tool written in Python3 that performs Reverse DNS on IPs to identify subdomains and new applications
