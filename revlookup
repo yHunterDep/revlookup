@@ -35,7 +35,7 @@ regex_ip = r"\d{1,3}(?:\.\d{1,3}){3}"
 regex_cidr = r"\d{1,3}(?:\.\d{1,3}){3}/\d+"
 regex_domain = r"([a-zA-Z0-9]+\.?)+\.[a-zA-Z]{2,}"
 
-parser = argparse.ArgumentParser(description="Revlookup 1.1 - HunterDep")
+parser = argparse.ArgumentParser(description="Revlookup 1.2 - HunterDep")
 parser.add_argument("-target", "--target", help="Target IP address or domain to perform reverse lookup (e.g., 72.217.29.238 or google.com)")
 parser.add_argument("-targets", "--targets", help="File containing IPs, domains, or CIDR ranges for reverse lookup (e.g., targets.txt)")
 parser.add_argument("-cidr", "--cidr", help="CIDR range to perform reverse lookup (e.g., 87.248.98.0/24)")
