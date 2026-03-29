@@ -11,26 +11,30 @@ chmod +x revlookup
 
 # Help of RevLookup
 ```sh
-./revlookup -h
+$ ./revlookup -h
 
-usage: revlookup [-h] [-target TARGET] [-targets TARGETS]
-                 [-cidr CIDR] [-o OUTPUT] [-s]
+usage: revlookup [-h] [-target TARGET] [-targets TARGETS] [-cidr CIDR]
+                 [-c CONCURRENT] [-o OUTPUT] [-s]
 
-Revlookup 1.1 - HunterDep
+Revlookup 1.2 - HunterDep
 
 options:
   -h, --help            show this help message and exit
   -target TARGET, --target TARGET
-                        coloque o ip alvo, ex:
-                        192.168.0.1
+                        Target IP address or domain to perform reverse
+                        lookup (e.g., 72.217.29.238 or google.com)
   -targets TARGETS, --targets TARGETS
-                        coloque uma lista de ips, ex:
-                        -targets ips.txt
+                        File containing IPs, domains, or CIDR ranges for
+                        reverse lookup (e.g., targets.txt)
   -cidr CIDR, --cidr CIDR
-                        passe um Cidr, ex: 192.168.0.1/24
+                        CIDR range to perform reverse lookup (e.g.,
+                        87.248.98.0/24)
+  -c CONCURRENT, --concurrent CONCURRENT
+                        Set the number of concurrent threads to use during
+                        scanning (default: 25)
   -o OUTPUT, --output OUTPUT
-                        salvar os resultados
-  -s, --silent          tirar o banner
+                        Output file to save results
+  -s, --silent          Silent mode (disable banner)
 ```
 
 # Resolving an IP
