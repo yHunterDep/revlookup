@@ -54,7 +54,7 @@ $ ./revlookup -target 140.82.113.31
 in-5.smtp.github.com
 ```
 
-# Resolving a Domain (-target too)
+# Resolving a Domain (-target also)
 ```sh
 $ ./revlookup -target yahoo.com
  ____            _                _
@@ -113,10 +113,55 @@ lsn3.ir2.yahoo.com
 ...
 ```
 
-# Resolving a file with IPS and Cidrs
-The -targets argument needs a file with ips (CIDR or NORMAL) to work, example:
+# Resolve a file containing domain names, IP addresses, or CIDRs, or all of them together.
+Solving a file with subdomains
 ```sh
-./revlookup -targets ips.txt
+$ ./revlookup -targets yahoo_subdomains.txt  ____            _                _
+|  _ \ _____   _| |    ___   ___ | | ___   _ _ __
+| |_) / _ \ \ / / |   / _ \ / _ \| |/ / | | | '_ \
+|  _ <  __/\ V /| |__| (_) | (_) |   <| |_| | |_) |
+|_| \_\___| \_/ |_____\___/ \___/|_|\_\\__,_| .__/
+                                            |_|
+
+[>] Versão: 1.2
+[$] Coded By HunterDep
+[@] Github: https://github.com/yHunterDep
+
+media-router-fp74.prod.media.vip.ne1.yahoo.com
+config.ydod.vip.a4e.yahoo.com
+media-router-fp73.prod.media.vip.gq1.yahoo.com
+media-router-fp74.prod.media.vip.bf1.yahoo.com
+b31.f51.ymdb.a4e.yahoo.com
+a44.f51.ymdb.a4e.yahoo.com
+b21.f51.ymdb.a4e.yahoo.com
+e1-ha.ycpi.cob.yahoo.com
+ec2-98-86-247-55.compute-1.amazonaws.com
+media-router-fp73.prod.media.vip.bf1.yahoo.com
+a43.f51.ymdb.a4e.yahoo.com
+b25.f51.ymdb.a4e.yahoo.com
+b16.f51.ymdb.a4e.yahoo.com
+b18.f51.ymdb.a4e.yahoo.com
+b26.f51.ymdb.a4e.yahoo.com
+b30.f51.ymdb.a4e.yahoo.com
+e2-ha.ycpi.cob.yahoo.com
+b24.f51.ymdb.a4e.yahoo.com
+b29.f51.ymdb.a4e.yahoo.com
+b27.f51.ymdb.a4e.yahoo.com
+b23.f51.ymdb.a4e.yahoo.com
+b19.f51.ymdb.a4e.yahoo.com
+ec2-34-233-34-230.compute-1.amazonaws.com
+smtp-yahoo.mail-prod1.omega.vip.bf1.yahoo.com
+b15.f51.ymdb.a4e.yahoo.com
+b22.f51.ymdb.a4e.yahoo.com
+b28.f51.ymdb.a4e.yahoo.com
+ec2-54-166-110-60.compute-1.amazonaws.com
+a7de0457831fd11f7.awsglobalaccelerator.com
+a7de0457831fd11f7.awsglobalaccelerator.com
+ec2-44-195-146-171.compute-1.amazonaws.com
+b32.f51.ymdb.a4e.yahoo.com
+ats1.l7.search.vip.bf1.yahoo.com
+
+...
 ```
 
 # Saving results
